@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'ds-digitalnormal';
+    src: url('../fonts/digital/ds-digi-webfont.woff2') format('woff2'), url('../fonts/digital/ds-digi-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'arabic_magicregular';
+    src: url('../fonts/arabic/arabic_magic-webfont.woff2') format('woff2'), url('../fonts/arabic/arabic_magic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.container {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    background-color: #405068;
+    padding: 30px;
+}
+
+.title-main {
+    font-family: 'arabic_magicregular', sans-serif;
+    color: white;
+    font-weight: normal;
+    font-size: 4em;
+    margin: 0;
+}
+
+.device {
+    width: 180px;
+    margin: auto;
+}
+
+.screen {
+    width: 180px;
+    height: 80px;
+    background-color: aliceblue;
+    margin: 10px auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    display: flex;
+    box-shadow: 1px 3px 10px #444, inset -1px -1px 0 #444;
+}
+
+.reset {
+    height: 15px;
+    width: 15px;
+    border-radius: 100%;
+    margin-right: auto;
+    display: block;
+    margin-left: 10px;
+    box-shadow: 1px 1px 2px #444, inset -1px -1px 0 #444;
+}
+
+small {
+    text-transform: uppercase;
+    margin-right: auto;
+    width: 15px;
+    display: block;
+    color: white;
+}
+
+.tasbeeh {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    box-shadow: 2px 5px 4px #444, inset -1px -1px 0 #444;
+}
+
+.number {
+    width: 45px;
+    height: 80px;
+    font-family: 'ds-digitalnormal', arial;
+    font-size: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
