@@ -12,11 +12,18 @@
     font-style: normal;
 }
 
-.container {
-    width: 50%;
-    margin: auto;
-    text-align: center;
+body {
     background-color: #405068;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+.container {
+    text-align: center;
     padding: 30px;
 }
 
@@ -26,16 +33,23 @@
     font-weight: normal;
     font-size: 4em;
     margin: 0;
+    text-align: center;
+}
+
+.hadiths p {
+    color: white;
+    border-bottom: 5px solid;
+    border-top: 5px solid;
+    padding: 10px;
 }
 
 .device {
-    width: 180px;
     margin: auto;
 }
 
 .screen {
-    width: 180px;
-    height: 80px;
+    width: 240px;
+    height: 140px;
     background-color: aliceblue;
     margin: 10px auto;
     margin-bottom: 20px;
@@ -45,8 +59,8 @@
 }
 
 .reset {
-    height: 15px;
-    width: 15px;
+    height: 40px;
+    width: 40px;
     border-radius: 100%;
     margin-right: auto;
     display: block;
@@ -58,24 +72,42 @@ small {
     text-transform: uppercase;
     margin-right: auto;
     width: 15px;
+    font-size: 17px;
     display: block;
     color: white;
 }
 
 .tasbeeh {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     border-radius: 100%;
     box-shadow: 2px 5px 4px #444, inset -1px -1px 0 #444;
+    margin-top: 50%;
 }
 
 .number {
-    width: 45px;
-    height: 80px;
+    width: 25%;
+    height: 140px;
     font-family: 'ds-digitalnormal', arial;
-    font-size: 80px;
+    font-size: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.hadiths-end p {
+    font-size: 70px;
+    text-align: center;
+    color: white;
+    border-bottom: 5px solid;
+    border-top: 5px solid;
+    padding: 10px;
+}
+
+@media (min-width:450px) {
+    .container {
+        width: 30%;
+        margin: auto;
+    }
 }
