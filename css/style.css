@@ -18,6 +18,48 @@ body {
     margin: 0;
 }
 
+/****************************************************************************************/
+
+/*************************************MOBILE NAV******************************************/
+
+/****************************************************************************************/
+
+.nav-bar-mobile {
+    position: fixed;
+    top: 0;
+    background-color: white;
+    z-index: 10;
+    width: 50px;
+}
+
+.nav-bar-mobile i {
+    padding: 15px;
+    width: 100%;
+}
+
+.nav-bar-mobile .nav-column {
+    z-index: 10;
+    background-color: white;
+    position: absolute;
+    transition: all 500ms;
+    left: 0;
+}
+
+.nav-bar-mobile .nav-column a {
+    display: block;
+    color: black;
+    text-decoration: none;
+}
+
+h2.verse {
+    color: white;
+    font-size: 45px;
+}
+
+.nav-bar-mobile .nav-column.hide {
+    left: -160px;
+}
+
 p {
     margin: 0;
 }
@@ -66,6 +108,7 @@ p {
     display: block;
     margin-left: 10px;
     box-shadow: 1px 1px 2px #444, inset -1px -1px 0 #444;
+    outline: none;
 }
 
 small {
@@ -82,7 +125,8 @@ small {
     height: 100px;
     border-radius: 100%;
     box-shadow: 2px 5px 4px #444, inset -1px -1px 0 #444;
-    margin-top: 50%;
+    margin-top: 25%;
+    outline: none;
 }
 
 .number {
@@ -97,7 +141,7 @@ small {
 }
 
 .hadiths-end p {
-    font-size: 70px;
+    font-size: 50px;
     text-align: center;
     color: white;
     border-bottom: 5px solid;
@@ -105,7 +149,50 @@ small {
     padding: 10px;
 }
 
-@media (min-width:450px) {
+.display-names {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    /* width: 55%; */
+    /* margin: auto; */
+    color: white;
+    font-weight: bold;
+}
+
+.container a {
+    text-decoration: none;
+    color: white;
+    line-height: 2;
+}
+
+.display-names p {
+    width: 35%;
+}
+
+.display-names p:first-of-type, .display-names p:nth-of-type(3) {
+    width: 5%;
+}
+
+.trad {
+    text-align: center;
+    padding: 10px;
+    line-height: 1.6;
+}
+
+.current {
+    color: blue;
+    background-color: rgba(255, 251, 0, 0.116);
+}
+
+.audio {
+    width: 100%;
+    bottom: 0;
+    position: sticky;
+    outline: none;
+}
+
+@media (min-width:800px) {
     .container {
         width: 30%;
         margin: auto;

@@ -1,73 +1,16 @@
-'use strict'
+'use strict';
 
-let tasbeeh = document.querySelector('.tasbeeh');
-let screen = document.querySelector('.screen');
-let span1 = document.getElementById('1');
-let span2 = document.getElementById('2');
-let span3 = document.getElementById('3');
-let span4 = document.getElementById('4');
-let reset = document.querySelector('.reset');
-let counter = 0;
-let number;
-let result = [];
+$('#burger-button').on('click', function () {
+    $('.nav-column').toggleClass('hide');
+});
 
-tasbeeh.addEventListener('click', ()=>{
-    counter ++;
-    number = counter.toString();
-    //console.log(number);
-    //console.log(result);
-    //console.log(counter);
-    switch (true) {
-        case (counter < 10):
-            span4.innerHTML = counter;
-            //console.log(counter);
-            //console.log(number);
-            break;
-        case (counter >= 10 && counter < 100):
-            result = [];
-            for (let i = 0; i < number.length; i++) {
-                result.push(+number.charAt(i));
-            }
-            //console.log('1er chiffre:', result[0], '2e chiffre',result[1]);
-            span4.innerHTML = result[1];
-            span3.innerHTML = result[0];
-            break;
-        case (counter >= 100 && counter < 1000):
-            result = [];
-            for (let i = 0; i < number.length; i++) {
-                result.push(+number.charAt(i));
-            }
-            console.log('1er chiffre:', result[0], '2e chiffre', result[1], '3e chiffre:', result[2]);
-            span4.innerHTML = result[2];
-            span3.innerHTML = result[1];
-            span2.innerHTML = result[0];
-            break;
-        case (counter >= 1000 && counter <= 9999):
-            result = [];
-            for (let i = 0; i < number.length; i++) {
-                result.push(+number.charAt(i));
-            }
-            span4.innerHTML = result[3];
-            span3.innerHTML = result[2];
-            span2.innerHTML = result[1];
-            span1.innerHTML = result[0];
-            //console.log('1er chiffre:', result[0], '2e chiffre', result[1]);
-            //pan4.innerHTML = counter;
-            break;
-        case (counter > 9999):
-            counter = 1;
-            span4.innerHTML = counter;
-            span3.innerHTML = '';
-            span2.innerHTML = '';
-            span1.innerHTML = '';
-            break;
+//RANDOM VERSE
+let rand1 = Math.floor(Math.random()*114);
+$.getJSON('http://api.alquran.cloud/v1/quran/ar.alafasy', verse);
+function verse(response3) {
+    let rand2 = Math.floor(Math.random() * response3.data.surahs[rand1 - 1].ayahs.length);
+    $.getJSON('http://api.alquran.cloud/v1/ayah/' + rand1 + ':' + rand2, ayah);
+    function ayah(response4) {
+        $('.verse').html(response4.data.text + ' {' + response4.data.surah.number + ':' + response4.data.numberInSurah + '}')
     }
-});
-
-reset.addEventListener('click', () => {
-    counter = 0;
-    span4.innerHTML = counter;
-    span3.innerHTML = '';
-    span2.innerHTML = '';
-    span1.innerHTML = '';
-});
+};
