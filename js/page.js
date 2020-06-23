@@ -1,16 +1,13 @@
 'use strict';
 
-$('#burger-button').on('click', function () {
-    $('.nav-column').toggleClass('hide');
-});
-
 let url_string = window.location.href;
 let url = new URL(url_string);
 let params = url.searchParams.get("number");
-console.log(params);
+//console.log(params);
 let prev = params;
 let next = params;
-
+let reprise = localStorage.getItem('quran-reading');
+localStorage.setItem('quran-reading', params);
 //FULL QURAN
 
 $.getJSON('http://api.alquran.cloud/v1/quran/ar.alafasy', arabic);
@@ -23,7 +20,7 @@ function arabic(response) {
         console.log(params);
         if (params - 1 >= 0) {
             prev--;
-            console.log(prev);
+            //console.log(prev);
             $('.controls').append('<a id="prev" href="page.html?number=' + prev + '">Sourate Précédente</a>');
         }
         $('.controls').append('<a href="quran.html">Retour</a>');
@@ -34,7 +31,7 @@ function arabic(response) {
         $('.container').html('');
         //Coran trad
         //console.log(response2.data.surahs[params].ayahs.length);
-        console.log(params);
+        //console.log(params);
         
         $('.title-main').html(response.data.surahs[params].name + ' / ' + response.data.surahs[params].englishName);
         $('.container').append('<div class="quran-part">');
@@ -94,8 +91,7 @@ function audio(response5) {
         if (audios[number] == audios[audios.length]) {
             number = 0;
             $('.audio').attr('autoplay', 'off');
-            console.log('fin');
-
+            //console.log('fin');
         }
         $('.current').removeClass('current');
         $('.' + number).addClass('current');

@@ -1,8 +1,4 @@
 'use strict';
-$('#burger-button').on('click', function () {
-    $('.nav-column').toggleClass('hide');
-});
-
 
 let tasbeeh = document.querySelector('.tasbeeh');
 let span1 = document.getElementById('1');
