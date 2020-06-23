@@ -8,7 +8,8 @@ let url_string = window.location.href;
 let url = new URL(url_string);
 let params = url.searchParams.get("number");
 console.log(params);
-
+let prev = params;
+let next = params;
 
 //FULL QURAN
 
@@ -21,12 +22,14 @@ function arabic(response) {
     function trad(response2) {
         console.log(params);
         if (params - 1 >= 0) {
-            let prev = params--;
-            $('#prev').append('<a href="page.html?number=' + prev + '">sourate précédente</a>');
+            prev--;
+            console.log(prev);
+            $('.controls').append('<a id="prev" href="page.html?number=' + prev + '">Sourate Précédente</a>');
         }
+        $('.controls').append('<a href="quran.html">Retour</a>');
         if (params + 1 < response2.data.surahs.length) {
-            let next = params++;
-            $('#next').append('<a href="page.html?number=' + next + '">sourate suivante</a>');
+            next++;
+            $('.controls').append('<a id="next" href="page.html?number=' + next + '">Sourate Suivante</a>');
         }
         $('.container').html('');
         //Coran trad

@@ -12,6 +12,10 @@
     font-style: normal;
 }
 
+* {
+    outline: none;
+}
+
 body {
     background-color: #405068;
     box-sizing: border-box;
@@ -190,6 +194,55 @@ small {
     bottom: 0;
     position: sticky;
     outline: none;
+}
+
+.nav-bar-mobile {
+    color: black;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.controls a {
+    color: #405068;
+    text-decoration: none;
+    padding: 10px;
+    background-color: white;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+#translation {
+    color: #405068;
+    background-color: white;
+    padding: 5px;
+    border-radius: 0px 10px 10px 0px;
+    position: fixed;
+    opacity: 0.5;
+}
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+footer small {
+    width: 21%;
+    font-size: 10px;
+    /* color: white; */
+    margin-bottom: 20px;
+}
+
+footer small a {
+    color: white;
+    text-decoration: none;
 }
 
 @media (min-width:800px) {
