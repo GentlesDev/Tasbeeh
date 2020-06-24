@@ -4,8 +4,8 @@ let url_string = window.location.href;
 let url = new URL(url_string);
 let params = url.searchParams.get("number");
 //console.log(params);
-let prev = params;
-let next = params;
+let prev1 = params;
+let next1 = params;
 let reprise = localStorage.getItem('quran-reading');
 localStorage.setItem('quran-reading', params);
 //FULL QURAN
@@ -17,17 +17,19 @@ function arabic(response) {
 
     $.getJSON('http://api.alquran.cloud/v1/quran/fr.hamidullah', trad);
     function trad(response2) {
-        console.log(params);
-        if (params - 1 >= 0) {
-            prev--;
+        //console.log(next + 1);
+        if (prev1-- > 0) {
+            let prev2 = prev1--;
             //console.log(prev);
-            $('.controls').append('<a id="prev" href="page.html?number=' + prev + '">Sourate Précédente</a>');
+            $('.controls').append('<a id="prev" href="page.html?number=' + prev2 + '">Sourate Précédente</a>');
         }
         $('.controls').append('<a href="quran.html">Retour</a>');
-        if (params + 1 < response2.data.surahs.length) {
-            next++;
-            $('.controls').append('<a id="next" href="page.html?number=' + next + '">Sourate Suivante</a>');
+        if (next1++ < response2.data.surahs.length-1) {
+            let next2 = next1++;
+            $('.controls').append('<a id="next" href="page.html?number=' + next2 + '">Sourate Suivante</a>');
+            //console.log(next2, response2.data.surahs.length);
         }
+        
         $('.container').html('');
         //Coran trad
         //console.log(response2.data.surahs[params].ayahs.length);
@@ -99,3 +101,48 @@ function audio(response5) {
         $('.audio').attr('autoplay', 'on');
     });
 };
+
+let percent = 0;
+let fill = 0;
+
+let sendDate = (new Date()).getTime();
+let responseTimeMs;
+$.ajax({
+    type: "GET", //with response body
+    //type: "HEAD", //only headers
+    url: "http://api.alquran.cloud/v1/quran/ar.alafasy",
+    success: function () {
+        var receiveDate = (new Date()).getTime();
+
+        responseTimeMs = receiveDate - sendDate;
+
+        console.log(responseTimeMs);
+        return responseTimeMs;
+    }
+});
+
+$('body').css('overflow', 'hidden');
+$('#translation').css('display', 'none');
+$('.audio').css('display', 'none');
+
+setInterval(() => {
+    if (responseTimeMs === undefined) {
+        if (percent != 100) {
+            $('#percent').html(percent++ + '%');
+            fill++;
+            $('#fill').css('width', fill + '%');
+        } else if (percent === 100) {
+            $('#percent').html('100%');
+            $('#fill').css('width', '500px');
+            $('#bar').css('color', 'white');
+            $('#bar').html('Please Wait');
+        }
+    } else {
+        setTimeout(()=>{
+            $('#bar-container').css('display', 'none');
+            $('#translation').css('display', 'block');
+            $('.audio').css('display', 'block');
+            $('body').css('overflow', 'auto');
+        },3000)
+    }
+}, 100);

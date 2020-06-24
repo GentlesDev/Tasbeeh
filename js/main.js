@@ -1,34 +1,5 @@
 'use strict';
 
-// let percent = 0;
-// let fill = 0;
-
-// setInterval(() => {
-//     if (percent != 100) {
-//         $('#percent').html(percent++ + '%');
-//         fill += 1
-//         $('#fill').css('width', fill + '%');
-//     } else if (percent === 100) {
-//         $('#bar-container').css('display', 'none');
-//     }
-// }, 10000);
-// var sendDate = (new Date()).getTime();
-
-// $.ajax({
-     //type: "GET", //with response body
-//     type: "HEAD", //only headers
-//     url: "http://api.alquran.cloud/v1/quran/ar.alafasy",
-//     success: function () {
-
-//         var receiveDate = (new Date()).getTime();
-
-//         var responseTimeMs = receiveDate - sendDate;
-
-//         console.log(responseTimeMs);
-
-//     }
-// });
-
 //RANDOM VERSE
 let rand1;
 let rand2;
@@ -45,3 +16,42 @@ function verse(response3) {
         $('.verse').html(response4.data.text + ' {' + response4.data.surah.number + ':' + response4.data.numberInSurah + '}')
     }
 };
+
+let percent = 0;
+let fill = 0;
+
+let sendDate = (new Date()).getTime();
+let responseTimeMs;
+$.ajax({
+    type: "GET", //with response body
+    //type: "HEAD", //only headers
+    url: "http://api.alquran.cloud/v1/quran/ar.alafasy",
+    success: function () {
+        var receiveDate = (new Date()).getTime();
+
+        responseTimeMs = receiveDate - sendDate;
+
+        console.log(responseTimeMs);
+        return responseTimeMs;
+    }
+});
+
+
+setInterval(() => {
+    if (responseTimeMs === undefined) {
+        $('body').css('overflow', 'hidden');
+        if (percent != 100) {
+            $('#percent').html(percent++ + '%');
+            fill++;
+            $('#fill').css('width', fill + '%');
+        } else if (percent === 100) {
+            $('#percent').html('100%');
+            $('#fill').css('width', '500px');
+            $('#bar').css('color', 'white');
+            $('#bar').html('Please Wait');
+        }
+    } else {
+        $('#bar-container').css('display', 'none');
+        $('body').css('overflow', 'auto');
+    }
+}, 100);
